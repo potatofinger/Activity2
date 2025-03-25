@@ -49,17 +49,27 @@ namespace Activity2
         {
             Random random = new Random();
             int choice = random.Next(1, 4);
-            if (choice == 1) computerChoice = "rock";
-            else if (choice == 2) computerChoice = "paper";
-            else computerChoice = "scissors";
 
-            if (playerChoice == "rock") player.Image = Properties.Resources.rock;
-            if (playerChoice == "paper") player.Image = Properties.Resources.paper;
-            if (playerChoice == "scissors") player.Image = Properties.Resources.gunting;
+            if (choice == 1)
+                computerChoice = "rock";
+            else if (choice == 2)
+                computerChoice = "paper";
+            else
+                computerChoice = "scissors";
 
-            if (computerChoice == "rock") computer.Image = Properties.Resources.rock;
-            if (computerChoice == "paper") computer.Image = Properties.Resources.paper;
-            if (computerChoice == "scissors") computer.Image = Properties.Resources.gunting;
+            if (playerChoice == "rock")
+                player.Image = Properties.Resources.rock;
+            else if (playerChoice == "paper")
+                player.Image = Properties.Resources.paper;
+            else
+                player.Image = Properties.Resources.gunting;
+
+            if (computerChoice == "rock")
+                computer.Image = Properties.Resources.rock;
+            else if (computerChoice == "paper")
+                computer.Image = Properties.Resources.paper;
+            else
+                computer.Image = Properties.Resources.gunting;
 
             if (playerChoice == computerChoice)
                 result.Text = "It's a Tie!";
@@ -75,31 +85,25 @@ namespace Activity2
                 result.Text = "You Lose!";
                 ComScore++;
             }
+
             UpdateScore();
         }
         private void AnimatePlayers()
         {
             int startY = ClientSize.Height / 3;
-            int peakY = startY - 50;
-            int groundY = startY;
-
-            player.Top = startY;
-            computer.Top = startY;
+            player.Top = computer.Top = startY;
 
             for (int i = 0; i < 10; i++)
             {
                 player.Top -= 5;
                 computer.Top -= 5;
                 Refresh();
-        
             }
-
             for (int i = 0; i < 10; i++)
             {
                 player.Top += 5;
                 computer.Top += 5;
                 Refresh();
-            
             }
 
             PlayRound();
